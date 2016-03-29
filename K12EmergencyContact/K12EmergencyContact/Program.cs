@@ -1,5 +1,6 @@
 ﻿using FISCA;
 using FISCA.Permission;
+using FISCA.Presentation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,8 @@ namespace K12EmergencyContact
             catalog01.Add(new DetailItemFeature(typeof(DetailContent.EmergencyDetailContent)));
 
             FeatureAce UserPermission = FISCA.Permission.UserAcl.Current["K12EmergencyContact.DetailContent.EmergencyDetailContent"];
+            if(UserPermission.Editable)
+                K12.Presentation.NLDPanels.Student.AddDetailBulider(new DetailBulider<DetailContent.EmergencyDetailContent>());
         }
 
         static void _bgLLoadUDT_DoWork(object sender, DoWorkEventArgs e)

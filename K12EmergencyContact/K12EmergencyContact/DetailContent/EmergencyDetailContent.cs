@@ -15,8 +15,7 @@ namespace K12EmergencyContact.DetailContent
     public partial class EmergencyDetailContent : FISCA.Presentation.DetailContent
     {
         BackgroundWorker _bgWorker;        
-        private ChangeListener _ChangeListener;
-        K12.Data.StudentRecord _StudRec;
+        private ChangeListener _ChangeListener;        
         bool _isBusy = false;
         ErrorProvider _errorP;
         udt_K12EmergencyContact _K12EmergencyContactRecord=null;
@@ -103,9 +102,9 @@ namespace K12EmergencyContact.DetailContent
         {
             if(_K12EmergencyContactRecord==null)
             {
-                _K12EmergencyContactRecord = new udt_K12EmergencyContact();
-                _K12EmergencyContactRecord.RefStudentID = int.Parse(PrimaryKey);
+                _K12EmergencyContactRecord = new udt_K12EmergencyContact();             
             }
+            _K12EmergencyContactRecord.RefStudentID = int.Parse(PrimaryKey);
             _K12EmergencyContactRecord.ContactName = txtName.Text;
             _K12EmergencyContactRecord.ContactPhone = txtPhone.Text;
             _K12EmergencyContactRecord.Save();
